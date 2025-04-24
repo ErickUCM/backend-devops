@@ -15,7 +15,7 @@ RUN npm run test
 RUN npm run build
 
 # stage dos de mi imagen multistage
-FROM node:22-alpine as runner
+FROM node:22-alpine AS runner
 
 WORKDIR /usr/app/
 
