@@ -9,8 +9,22 @@ pipeline {
                     reuseNode true
                 }
             }
-            steps {
-                sh "npm install"
+            stages {
+                stage("install") {
+                    steps {
+                        sh "npm install"
+                    }
+                }
+                stage("testing") {
+                    steps {
+                        sh "npm run test"
+                    }
+                }
+                stage("build") {
+                    steps {
+                        sh "npm run build"
+                    }
+                }
             }
         }
     }
