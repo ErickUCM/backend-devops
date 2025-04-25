@@ -37,7 +37,9 @@ pipeline {
             stages {
                 stage("validacion de codigo") {
                     steps {
-                        sh "sonar-scanner"
+                        withSonarQubeEnv("sonarqube"){
+                            sh "sonar-scanner"
+                        }
                     }
                 }
             }
