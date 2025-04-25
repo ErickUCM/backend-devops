@@ -27,6 +27,21 @@ pipeline {
                 }
             }
         }
+        stage("quality assurance") {
+            agent {
+                docker {
+                    image "sonarsource/sonar-scanner-cli"
+                    reuseNode true
+                }
+            }
+            stages {
+                stage("validacion de codigo") {
+                    steps {
+                        sh "sonar-scanner"
+                    }
+                }
+            }
+        }
         stage("docker build") {
             steps {
                 sh "docker build -t backend-devops ."
