@@ -58,6 +58,8 @@ pipeline {
         stage("docker build") {
             steps {
                 sh "docker build -t backend-devops ."
+                sh "docker tag backend-devops localhost:8082/backend-devops"
+                sh "docker push localhost:8082/backend-devops"
             }
         }
     }
